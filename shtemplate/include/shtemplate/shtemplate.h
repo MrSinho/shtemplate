@@ -13,4 +13,4 @@ extern "C" {
 }
 #endif//_cplusplus
 
-#endif//SH_THREADS_H
+#endif//SH_TEMPLATE_H
