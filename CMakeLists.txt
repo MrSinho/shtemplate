@@ -36,6 +36,15 @@ set_target_properties(shtemplate-sample PROPERTIES
 )
 endfunction()
 
+#||||           ||||
+#||||OS SPECIFIC||||
+#||||           ||||
+if (WIN32)
+else()
+endif(WIN32)
+if(UNIX)
+else()
+endif(UNIX)
 
 #||||     ||||
 #||||FLAGS||||
