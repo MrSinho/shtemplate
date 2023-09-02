@@ -46,6 +46,14 @@ if(UNIX)
 else()
 endif(UNIX)
 
+#||||                 ||||
+#||||COMPILER SPECIFIC||||
+#||||                 ||||
+if(MSVC)
+else()
+    add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
 #||||     ||||
 #||||FLAGS||||
 #||||     ||||
@@ -59,7 +67,7 @@ option(SH_TEMPLATE_BUILD_SAMPLE CACHE OFF)
 function(main)
 build_shtemplate()
 if (SH_TEMPLATE_BUILD_SAMPLE)
-build_shtemplate_sample()
+    build_shtemplate_sample()
 endif(SH_TEMPLATE_BUILD_SAMPLE)
 endfunction()
 
