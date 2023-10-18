@@ -64,4 +64,5 @@ linux/*
 
 docs/doxygen-awesome-css
 docs/Doxyfile
-docs/
+docs/html
+docs/latex
