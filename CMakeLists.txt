@@ -3,6 +3,32 @@ add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
 
 
 
+#|||
+#|||DOCS GENERATION
+#|||
+find_package(Doxygen)
+if (DOXYGEN_FOUND)
+
+    set(SH_DOXYFILE_SRC ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.in)
+    set(SH_DOXYFILE_DST ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile)
+
+    configure_file(
+        ${SH_DOXYFILE_SRC} 
+        ${SH_DOXYFILE_DST} 
+        @ONLY
+    )
+
+    add_custom_target(docs-shtemplate
+        COMMAND ${DOXYGEN_EXECUTABLE} ${SH_DOXYFILE_DST}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMENT "Generating HTML documentation"
+        VERBATIM
+    )
+
+endif(DOXYGEN_FOUND)
+
+
+
 #||||         ||||
 #||||EXTERNALS||||
 #||||         ||||
@@ -43,6 +69,8 @@ set_target_properties(shtemplate-sample PROPERTIES
 )
 endfunction()
 
+
+
 #||||           ||||
 #||||OS SPECIFIC||||
 #||||           ||||
@@ -53,6 +81,8 @@ if(UNIX)
 else()
 endif(UNIX)
 
+
+
 #||||                 ||||
 #||||COMPILER SPECIFIC||||
 #||||                 ||||
@@ -60,6 +90,8 @@ if(MSVC)
 else()
     add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
+
+
 
 #||||     ||||
 #||||FLAGS||||

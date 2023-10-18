@@ -1,0 +1,15 @@
+-- Found Doxygen: D:/Program Files/doxygen/bin/doxygen.exe (found version "1.9.8") found components: doxygen missing components: dot
+-- Selecting Windows SDK version 10.0.22000.0 to target Windows 10.0.22621.
+-- Configuring done (2.6s)
+-- Generating done (0.2s)
+-- Build files have been written to: D:/home/desktop/GitHub/shtemplate/windows
+Versione di MSBuild L17.7.2+d6990bcfa per .NET Framework
+
+  Checking Build System
+  Building Custom Rule D:/home/desktop/GitHub/shtemplate/CMakeLists.txt
+  shtemplate.c
+  shtemplate.vcxproj -> D:\home\desktop\GitHub\shtemplate\bin\Debug\shtemplate.lib
+  Building Custom Rule D:/home/desktop/GitHub/shtemplate/CMakeLists.txt
+  shtemplate-sample.c
+  shtemplate-sample.vcxproj -> D:\home\desktop\GitHub\shtemplate\bin\Debug\shtemplate-sample.exe
+  Building Custom Rule D:/home/desktop/GitHub/shtemplate/CMakeLists.txt

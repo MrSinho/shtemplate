@@ -59,3 +59,9 @@ unix-build/*
 bin/*
 windows-bin/*
 unix-bin/*
+windows/*
+linux/*
+
+docs/doxygen-awesome-css
+docs/Doxyfile
+docs/
