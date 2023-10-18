@@ -1,0 +1,18 @@
+PROJECT_NAME           = "shtemplate"
+
+PROJECT_BRIEF          = "shtemplate by Sinho Pascal"
+USE_MDFILE_AS_MAINPAGE = @CMAKE_SOURCE_DIR@/README.md
+
+OUTPUT_DIRECTORY       = @CMAKE_SOURCE_DIR@/docs/
+INPUT                  = @CMAKE_SOURCE_DIR@/shtemplate/include @CMAKE_SOURCE_DIR@/README.md
+RECURSIVE              = YES
+EXTRACT_ALL            = NO
+HAVE_DOT               = NO
+HIDE_UNDOC_MEMBERS     = YES
+GENERATE_HTML          = YES
+
+GENERATE_TREEVIEW      = YES
+DISABLE_INDEX          = NO
+FULL_SIDEBAR           = NO
+HTML_EXTRA_STYLESHEET  = @CMAKE_SOURCE_DIR@/docs/doxygen-awesome-css/doxygen-awesome.css @CMAKE_SOURCE_DIR@/docs/doxygen-awesome-css/doxygen-awesome-sidebar-only.css
+HTML_EXTRA_FILES       = @CMAKE_SOURCE_DIR@/docs/doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js @CMAKE_SOURCE_DIR@/docs/doxygen-awesome-css/doxygen-awesome-interactive-toc.js @CMAKE_SOURCE_DIR@/docs/doxygen-awesome-css/doxygen-awesome-paragraph-link.js @CMAKE_SOURCE_DIR@/docs/doxygen-awesome-css/doxygen-awesome-tabs.js
