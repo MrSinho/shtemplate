@@ -3,116 +3,49 @@ add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
 
 
 
-#|||
-#|||DOCS GENERATION
-#|||
-find_package(Doxygen)
-if (DOXYGEN_FOUND)
-
-    set(SH_DOXYFILE_SRC ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.in)
-    set(SH_DOXYFILE_DST ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile)
-
-    configure_file(
-        ${SH_DOXYFILE_SRC} 
-        ${SH_DOXYFILE_DST} 
-        @ONLY
-    )
-
-    add_custom_target(docs-shtemplate
-        COMMAND ${DOXYGEN_EXECUTABLE} ${SH_DOXYFILE_DST}
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-        COMMENT "Generating HTML documentation"
-        VERBATIM
-    )
-
-endif(DOXYGEN_FOUND)
-
-
-
-#||||         ||||
-#||||EXTERNALS||||
-#||||         ||||
-
-
-
-#||||       ||||
-#||||PROJECT||||
-#||||       ||||
 project(shtemplate C)
 
 
 
-#||||       ||||
-#||||LIBRARY||||
-#||||       ||||
-function(build_shtemplate)
-add_library(shtemplate shtemplate/src/shtemplate.c)
-target_include_directories(shtemplate PUBLIC 
-    ${CMAKE_CURRENT_SOURCE_DIR}/shtemplate/include
-)
-set_target_properties(shtemplate PROPERTIES
-    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
-)
-endfunction()
+set(SH_TEMPLATE_VERSION  "pre-release")
+set(SH_TEMPLATE_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 
 
-#||||       ||||
-#||||SAMPLES||||
-#||||       ||||
-function(build_shtemplate_sample)
-add_executable(shtemplate-sample sample/src/shtemplate-sample.c)
-target_link_libraries(shtemplate-sample PUBLIC shtemplate)
-set_target_properties(shtemplate-sample PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
-    VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
-)
-endfunction()
+option(SH_TEMPLATE_BINARIES_DIR  CACHE OFF)
+option(SH_TEMPLATE_BUILD_EXAMPLE CACHE OFF)
 
-
-
-#||||           ||||
-#||||OS SPECIFIC||||
-#||||           ||||
-if (WIN32)
-else()
-endif(WIN32)
-if(UNIX)
-else()
-endif(UNIX)
-
-
-
-#||||                 ||||
-#||||COMPILER SPECIFIC||||
-#||||                 ||||
-if(MSVC)
-else()
-    add_compile_options(-Wall -Wextra -Wpedantic)
+if (NOT SH_TEMPLATE_BINARIES_DIR)
+set(SH_TEMPLATE_BINARIES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 endif()
 
 
 
-#||||     ||||
-#||||FLAGS||||
-#||||     ||||
-option(SH_TEMPLATE_BUILD_SAMPLE CACHE OFF)
+message(STATUS "SH_TEMPLATE_VERSION       : ${SH_TEMPLATE_VERSION}")
+message(STATUS "SH_TEMPLATE_ROOT_DIR      : ${SH_TEMPLATE_ROOT_DIR}")
+message(STATUS "SH_TEMPLATE_BINARIES_DIR  : ${SH_TEMPLATE_BINARIES_DIR}")
+message(STATUS "SH_TEMPLATE_BUILD_EXAMPLE : ${SH_TEMPLATE_BUILD_EXAMPLE}")
 
 
 
-#||||    ||||
-#||||MAIN||||
-#||||    ||||
+include(shtemplate/shtemplate.cmake)
+include(docs/shtemplate-docs.cmake)
+include(example/shtemplate-example.cmake)
+
+
+
+
 function(main)
+
 build_shtemplate()
-if (SH_TEMPLATE_BUILD_SAMPLE)
-    build_shtemplate_sample()
-endif(SH_TEMPLATE_BUILD_SAMPLE)
+build_shtemplate_docs()
+
+if (SH_TEMPLATE_BUILD_EXAMPLE)
+    build_shtemplate_example()
+endif(SH_TEMPLATE_BUILD_EXAMPLE)
+
 endfunction()
 
 
 
-#||||          ||||
-#||||CMAKE MAIN||||
-#||||          ||||
 main()

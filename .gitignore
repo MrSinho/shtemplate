@@ -54,13 +54,12 @@ dkms.conf
 .vs/*
 .vscode/*
 build/*
-win-build/*
-unix-build/*
 bin/*
-windows-bin/*
-unix-bin/*
-windows/*
-linux/*
+
+docs/Doxyfile
+docs/html
+docs/latex
+docs/xml
 
 docs/doxygen-awesome-css
 docs/Doxyfile

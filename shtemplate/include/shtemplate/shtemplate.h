@@ -1,28 +1,46 @@
 #ifndef SH_TEMPLATE_H
 #define SH_TEMPLATE_H
 
+
+
 /**
-* @file shtemplate.h
+* @file
 * 
-* @brief shtemplate header file.
+* @brief `shtemplate` header file.
 *
 *
-* @author Sinho Pascal <https://github.com/mrsinho>
+* @author mrsinho <https://github.com/mrsinho>
 */
+
+
 
 #ifdef __cplusplus
 extern "C" {
 #endif//__cplusplus
 
 
+
 /**
- * @brief a template function
- * @param void no arguments
- * @return status of the function, equal to 1 on success
+* @struct shtemplate
+* @brief Empty struct. It means nothing.
+*/
+typedef struct shtemplate {
+    float empty; /**< Empty float, it means nothing. */
+} shtemplate;
+
+
+
+/**
+ * @brief A template function
+ * 
+ * @param void [no arguments]
+ * 
+ * @return status of the function, equal to 1 on success.
 */
 int shTemplateFunction(
     void
 );
+
 
 
 #ifdef __cplusplus
